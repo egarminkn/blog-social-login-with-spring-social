@@ -18,7 +18,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 jar {
-    baseName = 'demo-web'
+    baseName = 'social-login'
     version = '0.0.1-SNAPSHOT'
 }
 
@@ -28,6 +28,9 @@ repositories {
 	maven {
 		url "http://repo.spring.io/milestone"
 	}
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
@@ -41,19 +44,36 @@ dependencies {
     compile("org.springframework.social:spring-social-facebook:1.1.0.RELEASE")
     compile("org.springframework.social:spring-social-twitter:1.1.0.RELEASE")
     compile("org.springframework.social:spring-social-linkedin:1.0.0.RELEASE")
-    compile("org.springframework.social:spring-social-github:1.0.0.M4")
-    compile("org.springframework.social:spring-social-google:1.0.0.RELEASE")
-    compile("org.springframework.social:spring-social-live:1.0.0-SNAPSHOT") {
-        exclude group: 'javax.servlet', module: 'servlet-api'
+    compile("com.github.vkolodrevskiy:spring-social-vkontakte:6b7ce10545") {
+        exclude group: 'org.springframework.social', module: '*'
     }
+    compile("org.springframework.social:spring-social-google:1.0.0.RELEASE")
+    compile("com.github.cackle:spring-social-odnoklassniki:161951e55a") {
+        exclude group: 'org.springframework.social', module: '*'
+    }
+
     compile("org.apache.commons:commons-lang3:3.3.2")
     compile("com.google.guava:guava:14.0.1")
     compile("com.h2database:h2:1.3.175")
 //  compile("org.hsqldb:hsqldb:2.3.2")
+    compile("org.apache.httpcomponents:httpclient:4.5.2")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
+}
+
+apply plugin: 'maven'
+task writeNewPom << {
+    pom {
+        project {
+            groupId 'org.verygroup'
+            artifactId 'social-login'
+            version '0.0.1-SNAPSHOT'
+
+            inceptionYear '2017'
+        }
+    }.writeTo("pom.xml")
 }

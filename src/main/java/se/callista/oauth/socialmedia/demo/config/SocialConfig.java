@@ -1,10 +1,10 @@
 package se.callista.oauth.socialmedia.demo.config;
 
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
-import org.springframework.social.github.connect.GitHubConnectionFactory;
+import org.springframework.social.vkontakte.connect.VKontakteConnectionFactory;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.linkedin.connect.LinkedInConnectionFactory;
-import org.springframework.social.live.connect.LiveConnectionFactory;
+import org.springframework.social.odnoklassniki.connect.OdnoklassnikiConnectionFactory;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 import se.callista.oauth.socialmedia.demo.dao.UsersDao;
 import se.callista.oauth.socialmedia.demo.services.AccountConnectionSignUpService;
@@ -50,12 +50,13 @@ public class SocialConfig implements SocialConfigurer {
         connectionFactoryConfigurer.addConnectionFactory(new GoogleConnectionFactory(
             environment.getProperty("spring.social.google.appId"),
             environment.getProperty("spring.social.google.appSecret")));
-        connectionFactoryConfigurer.addConnectionFactory(new GitHubConnectionFactory(
-            environment.getProperty("spring.social.github.appId"),
-            environment.getProperty("spring.social.github.appSecret")));
-        connectionFactoryConfigurer.addConnectionFactory(new LiveConnectionFactory(
-            environment.getProperty("spring.social.live.appId"),
-            environment.getProperty("spring.social.live.appSecret")));
+        connectionFactoryConfigurer.addConnectionFactory(new VKontakteConnectionFactory(
+            environment.getProperty("spring.social.vkontakte.appId"),
+            environment.getProperty("spring.social.vkontakte.appSecret")));
+        connectionFactoryConfigurer.addConnectionFactory(new OdnoklassnikiConnectionFactory(
+            environment.getProperty("spring.social.odnoklassniki.appId"),
+            environment.getProperty("spring.social.odnoklassniki.appKeySecret"),
+            environment.getProperty("spring.social.odnoklassniki.appKeyPublic")));
     }
 
     @Override
