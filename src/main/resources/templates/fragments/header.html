@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
     <head th:fragment="commonHeadTag(title)">
         <title th:text="${title}" />
@@ -31,17 +30,19 @@
     </head>
 
     <body>
-
         <div th:fragment="userInfo">
             <!-- Replace navbar-default with navbar-inverse to get a black header -->
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">OAuth social media demo</a>
+                        <a class="navbar-brand">
+                            Вход через соц.сети
+                        </a>
                     </div>
+
                     <div>
                         <p th:unless="${currentUserConnection == null}" class="navbar-text navbar-right">
-                            Signed in using
+                            Вход выполнен через
 
                             <a th:if="${currentUserConnection.providerId == 'linkedin'}" class="ml btn btn-social-icon btn-sm btn-linkedin">
                                 <i class="fa fa-linkedin"></i>
@@ -67,7 +68,7 @@
                                 <i class="fa fa-google-plus"></i>
                             </a>
 
-                            as
+                            от имени
 
                             <span th:text="${currentUserDisplayName}"/>
                             <img th:src="${currentUserConnection.imageUrl}" width="32" height="32" />
@@ -76,6 +77,6 @@
                 </div>
             </nav>
         </div>
-
     </body>
+
 </html>

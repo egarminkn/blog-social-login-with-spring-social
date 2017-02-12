@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
-    <head th:include="fragments/header :: commonHeadTag('Login page')" />
+    <head th:include="fragments/header :: commonHeadTag('Страница входа')" />
 
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-
         <div th:replace="fragments/header :: userInfo"/>
 
         <div class="container">
-            <h2>Login page</h2>
+            <h2>Страница входа</h2>
 
-            <p>Sign in with:</p>
+            <p>Зайти через:</p>
 
             <table style="border-collapse: separate; border-spacing: 2px">
                 <tr>
@@ -28,6 +24,7 @@
                         </a>
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <a href="/auth/twitter" class="ml btn btn-block btn-social-icon btn-sm btn-twitter">
@@ -40,6 +37,7 @@
                         </a>
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <a href="/auth/odnoklassniki" class="ml btn btn-block btn-social-icon btn-sm btn-odnoklassniki">
@@ -56,6 +54,10 @@
 
             <div th:include="fragments/exception :: errorInfo"/>
 
-        </div><!-- /.container -->
+        </div>
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
+
 </html>

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
     <body>
-
         <div th:fragment="errorInfo">
             <p>
-                <div style="color: red" th:unless="${exception == null}"><span style="font-weight: bold">Exception: </span><span th:text="${exception}">exception</span></div>
+                <div style="color: red" th:unless="${exception == null}">
+                    <span style="font-weight: bold">
+                        Exception:
+                    </span>
+                    <span th:text="${exception}" />
+                </div>
             </p>
         </div>
-
     </body>
+
 </html>

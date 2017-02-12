@@ -1,36 +1,57 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head th:include="fragments/header :: commonHeadTag('Error Page')" />
+    <head th:include="fragments/header :: commonHeadTag('Страница ошибки')" />
 
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-
-        <!--
-        <div th:replace="fragments/header :: userInfo"/>
-        -->
-
         <div class="container">
-            <h2>Error Page</h2>
+            <h2>Страница ошибки</h2>
 
             <p>
-                An error occurred at <span th:text="${timestamp}"/>
+                Ошибка произошла в
+                <span th:text="${timestamp}"/>
             </p>
+
             <p>
                 <div>
-                    <span style="font-weight: bold">HTTP Status: </span><span th:text="${status}"/>
+                    <span style="font-weight: bold">
+                        HTTP Status:
+                    </span>
+                    <span th:text="${status}"/>
                     (<span th:text="${error}"/>)
                 </div>
-                <div><span style="font-weight: bold">Message: </span><span th:text="${message}"/></div>
 
-                <div th:unless="${exception == null}"><span style="font-weight: bold">Exception: </span><span th:text="${exception}"/></div>
-                <div th:unless="${exception == null}"><span style="font-weight: bold">Trace:     </span><span th:text="${trace}"/></div>
+                <div>
+                    <span style="font-weight: bold">
+                        Message:
+                    </span>
+                    <span th:text="${message}"/>
+                </div>
+
+                <div th:unless="${exception == null}">
+                    <span style="font-weight: bold">
+                        Exception:
+                    </span>
+                    <span th:text="${exception}"/>
+                </div>
+
+                <div th:unless="${exception == null}">
+                    <span style="font-weight: bold">
+                        Trace:
+                    </span>
+                    <span th:text="${trace}"/>
+                </div>
             </p>
+
             <p>
-                Back to the <a th:href="@{/}">Home Page</a>
+                Назад на
+                <a th:href="@{/}">
+                    главную
+                </a>
             </p>
-        </div><!-- /.container -->
+        </div>
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
 </html>

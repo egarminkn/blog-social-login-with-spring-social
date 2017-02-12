@@ -1,45 +1,39 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head th:include="fragments/header :: commonHeadTag('Main Page')" />
+    <head th:include="fragments/header :: commonHeadTag('Главная страница')" />
 
     <body>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-
         <div th:replace="fragments/header :: userInfo"/>
 
         <div class="container">
-            <h2>Main Page</h2>
+            <h2>Главная страница</h2>
 
             <p>
-            <form method="POST" th:action="@{/update}">
-                <input type="text" name="data" th:value="${currentData}"/>
-                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-                <button>Update your data</button>
-            </form>
+                <form method="POST" th:action="@{/update}">
+                    <input type="text" name="data" th:value="${currentData}"/>
+                    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                    <button>
+                        Обновите ваши данные
+                    </button>
+                </form>
             </p>
-
-            <!--
-            <p>
-            <form method="POST" th:action="@{/updateStatus}">
-                <input type="text" name="status" />
-                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-                <button>Update your social status</button>
-            </form>
-            </p>
-            -->
 
             <p>
                 <form method="POST" th:action="@{/logout}">
                     <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
-                    <button>Logout</button>
+                    <button>
+                        Разлогиниться
+                    </button>
                 </form>
             </p>
 
             <div th:replace="fragments/exception :: errorInfo"/>
 
-        </div><!-- /.container -->
+        </div>
     </body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
+
 </html>
