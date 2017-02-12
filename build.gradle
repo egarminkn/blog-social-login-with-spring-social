@@ -56,7 +56,8 @@ dependencies {
     compile("org.springframework.social:spring-social-google:1.0.0.RELEASE") {
         exclude group: 'org.springframework.social', module: '*'
     }
-    compile("com.github.cackle:spring-social-odnoklassniki:161951e55a") {
+    //compile("com.github.egarminkn:spring-social-odnoklassniki:64ce27fe38") {
+    compile("com.github.vkolodrevskiy:spring-social-odnoklassniki:3ebdc083cd") {
         exclude group: 'org.springframework.social', module: '*'
     }
 
