@@ -67,11 +67,21 @@ dependencies {
 //  compile("org.hsqldb:hsqldb:2.3.2")
     compile("org.apache.httpcomponents:httpclient:4.5.2")
 
+    compile("org.slf4j:jcl-over-slf4j:1.7.22")
+
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
+}
+
+apply plugin: 'idea'
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
 
 apply plugin: 'maven'
