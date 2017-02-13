@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-    <head th:include="fragments/header :: commonHeadTag('Страница входа')" />
+<!DOCTYPE html>
+<html>
+    <c:set var="title" value="Страница входа" scope="request"/>
+    <jsp:include page="fragments/head-tag.jsp"/>
 
     <body>
-        <div th:replace="fragments/header :: userInfo"/>
+        <jsp:include page="fragments/user-info.jsp"/>
 
         <div class="container">
             <h2>Страница входа</h2>
@@ -52,12 +57,11 @@
                 </tr>
             </table>
 
-            <div th:include="fragments/exception :: errorInfo"/>
+            <jsp:include page="fragments/error-info.jsp"/>
 
         </div>
     </body>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-
 </html>
