@@ -28,4 +28,4 @@ target
 .DS_Store
 
 # My private property-file should not be stored in Git
-my-application.properties
+src/main/resources/social.properties

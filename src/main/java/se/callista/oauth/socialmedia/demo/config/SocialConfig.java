@@ -23,11 +23,14 @@ import org.springframework.social.security.AuthenticationNameUserIdSource;
 
 import javax.sql.DataSource;
 
+import org.springframework.context.annotation.PropertySource;
+
 /**
  * Created by magnus on 18/08/14.
  */
 @Configuration
 @EnableSocial
+@PropertySource("classpath:social.properties")
 public class SocialConfig implements SocialConfigurer {
 
     @Autowired
@@ -42,8 +45,8 @@ public class SocialConfig implements SocialConfigurer {
             environment.getProperty("spring.social.facebook.appId"),
             environment.getProperty("spring.social.facebook.appSecret")));
         connectionFactoryConfigurer.addConnectionFactory(new TwitterConnectionFactory(
-            environment.getProperty("twitter.consumerKey"),
-            environment.getProperty("twitter.consumerSecret")));
+            environment.getProperty("spring.social.twitter.consumerKey"),
+            environment.getProperty("spring.social.twitter.consumerSecret")));
         connectionFactoryConfigurer.addConnectionFactory(new LinkedInConnectionFactory(
             environment.getProperty("spring.social.linkedin.appId"),
             environment.getProperty("spring.social.linkedin.appSecret")));
@@ -66,8 +69,9 @@ public class SocialConfig implements SocialConfigurer {
 
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-        JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource,connectionFactoryLocator, Encryptors.noOpText());
+        JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
         repository.setConnectionSignUp(new AccountConnectionSignUpService(usersDao));
         return repository;
     }
+
 }
