@@ -1,4 +1,4 @@
-blog-social-login-with-spring-social
+Демонстрация входа через соц.сети
 ====================================
 
-Source code for the blog: http://callistaenterprise.se/blogg/teknik/2014/09/02/adding-social-login-to-a-website-using-spring-social/
+Исходники предоставлены для блога: http://verygroup.livejournal.com/  

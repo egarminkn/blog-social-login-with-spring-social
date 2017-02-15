@@ -1,4 +1,4 @@
-package se.callista.oauth.socialmedia.demo.model;
+package org.verygroup.sociallogin.model;
 
 /**
  * Created by magnus on 18/08/14.
@@ -90,4 +90,5 @@ public class UserConnection {
     public Long getExpireTime() {
         return expireTime;
     }
+
 }

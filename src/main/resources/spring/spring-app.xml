@@ -9,5 +9,6 @@
     <!--<import resource="spring-social.xml"/>-->
 
     <context:annotation-config/>
-    <context:component-scan base-package="se.callista.oauth.socialmedia.demo"/>
+    <context:component-scan base-package="org.verygroup.sociallogin"/>
+
 </beans>

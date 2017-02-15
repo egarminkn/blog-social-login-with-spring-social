@@ -16,17 +16,50 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <style type="text/css">
-        .ml {
-            width: 110px;
+        .ml.btn.btn-block.btn-social-icon.btn-sm {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
             color: white;
             text-decoration: none;
+            margin-right: 20px;
         }
 
-        .ml:hover,
-        .ml:focus,
+        .ml.btn.btn-block.btn-social-icon.btn-sm .fa {
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        .ml.btn.btn-block.btn-social-icon.btn-sm:hover,
+        .ml.btn.btn-block.btn-social-icon.btn-sm:focus,
         a:focus {
             color: white;
             text-decoration: none;
         }
+
+        .accountConnection,
+        .accountConnection .connectForm {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .accountConnection {
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .accountConnection .connectForm {
+            width: 350px;
+            justify-content: space-between;
+        }
+
+        .center {
+            width: 510px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>

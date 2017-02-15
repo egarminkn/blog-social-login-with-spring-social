@@ -1,4 +1,4 @@
-package se.callista.oauth.socialmedia.demo.services;
+package org.verygroup.sociallogin.services;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;

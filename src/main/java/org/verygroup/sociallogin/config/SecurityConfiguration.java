@@ -1,6 +1,7 @@
-package se.callista.oauth.socialmedia.demo.config;
+package org.verygroup.sociallogin.config;
 
-import se.callista.oauth.socialmedia.demo.services.SimpleSocialUsersDetailService;
+import org.verygroup.sociallogin.services.SimpleSocialUsersDetailService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +34,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
             .formLogin()
                 .loginPage("/login")
@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
         .and()
             .authorizeRequests()
-                .antMatchers("/favicon.ico", "/static-resources/**").permitAll()
+                .antMatchers("/connect/**").permitAll()
                 .antMatchers("/**").authenticated()
         .and()
             .rememberMe()
@@ -60,4 +60,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public SocialUserDetailsService socialUsersDetailService() {
         return new SimpleSocialUsersDetailService(userDetailsService());
     }
+
 }

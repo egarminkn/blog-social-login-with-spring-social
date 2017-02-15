@@ -1,14 +1,14 @@
-package se.callista.oauth.socialmedia.demo.controllers.util;
+package org.verygroup.sociallogin.controllers.util;
 
-import se.callista.oauth.socialmedia.demo.dao.DataDao;
-import se.callista.oauth.socialmedia.demo.dao.UsersDao;
-import se.callista.oauth.socialmedia.demo.model.UserConnection;
-import se.callista.oauth.socialmedia.demo.model.UserProfile;
+import org.verygroup.sociallogin.dao.DataDao;
+import org.verygroup.sociallogin.dao.UsersDao;
+import org.verygroup.sociallogin.model.UserConnection;
+import org.verygroup.sociallogin.model.UserProfile;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
@@ -16,12 +16,8 @@ import org.springframework.ui.Model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.Enumeration;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,49 +33,12 @@ public class SocialControllerUtil {
     private static final String USER_PROFILE = "MY_USER_PROFILE";
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
     private DataDao dataDao;
 
     @Autowired
     private UsersDao usersDao;
 
-    public void dumpDbInfo() {
-        try {
-            Connection c = jdbcTemplate.getDataSource().getConnection();
-            DatabaseMetaData md = c.getMetaData();
-            ResultSet rs = md.getTables(null, null, "%", null);
-            while (rs.next()) {
-                if (rs.getString(4).equalsIgnoreCase("TABLE")) {
-
-                    LOG.debug("TABLE NAME = " + rs.getString(3) + ", Cat = " + rs.getString(1) + ", Schema = " + rs.getString(2) + ", Type = " + rs.getString(4));
-
-                    String tableName = rs.getString(3);
-                    List<String> sl = jdbcTemplate.query("select * from " + tableName,
-                        new RowMapper<String>() {
-                            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                            StringBuffer sb = new StringBuffer();
-                            for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                                sb.append(rs.getString(i)).append(' ');
-                            }
-                            return sb.toString();
-                            }
-                        });
-                    LOG.debug("No of rows: {}", sl.size());
-                    for (String s: sl) {
-                        LOG.debug(s);
-                    }
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void setModel(HttpServletRequest request, Principal currentUser, Model model) {
-
         // SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
 
         String userId = currentUser == null ? null : currentUser.getName();
@@ -122,7 +81,7 @@ public class SocialControllerUtil {
         }
     }
 
-    protected void logInfo(HttpServletRequest request, Model model, String userId, String path, HttpSession session) {
+    private void logInfo(HttpServletRequest request, Model model, String userId, String path, HttpSession session) {
         // Log the content of the model
         LOG.debug("Path: " + path + ", currentUserId: " + userId);
 
@@ -155,7 +114,7 @@ public class SocialControllerUtil {
      * @param userId
      * @return
      */
-    protected UserProfile getUserProfile(HttpSession session, String userId) {
+    private UserProfile getUserProfile(HttpSession session, String userId) {
         UserProfile profile = (UserProfile) session.getAttribute(USER_PROFILE);
 
         // Reload from persistence storage if not set or invalid (i.e. no valid userId)
@@ -173,7 +132,7 @@ public class SocialControllerUtil {
      * @param userId
      * @return
      */
-    public UserConnection getUserConnection(HttpSession session, String userId) {
+    private UserConnection getUserConnection(HttpSession session, String userId) {
         UserConnection connection;
         connection = (UserConnection) session.getAttribute(USER_CONNECTION);
 
@@ -192,8 +151,7 @@ public class SocialControllerUtil {
      * @param profile
      * @return
      */
-    protected String getDisplayName(UserConnection connection, UserProfile profile) {
-
+    private String getDisplayName(UserConnection connection, UserProfile profile) {
         // The name is set differently in different providers so we better look in both places...
         if (connection.getDisplayName() != null) {
             return connection.getDisplayName();
@@ -201,4 +159,5 @@ public class SocialControllerUtil {
             return profile.getName();
         }
     }
+
 }

@@ -1,10 +1,13 @@
-package se.callista.oauth.socialmedia.demo.dao;
+package org.verygroup.sociallogin.dao;
 
-import se.callista.oauth.socialmedia.demo.model.UserConnection;
-import se.callista.oauth.socialmedia.demo.model.UserProfile;
+import org.verygroup.sociallogin.model.UserConnection;
+import org.verygroup.sociallogin.model.UserProfile;
+
 import org.apache.commons.lang3.RandomStringUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -89,4 +92,5 @@ public class UsersDao {
             profile.getName(),
             profile.getUsername());
     }
+
 }

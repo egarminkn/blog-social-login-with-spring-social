@@ -1,4 +1,4 @@
-package se.callista.oauth.socialmedia.demo.dao;
+package org.verygroup.sociallogin.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,4 +47,5 @@ public class DataDao {
             jdbcTemplate.update("UPDATE data SET data = ? WHERE userId = ?", data, userId);
         }
     }
+
 }
