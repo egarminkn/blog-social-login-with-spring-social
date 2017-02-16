@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- For assistance related to logback-translator or configuration  -->
-<!-- files in general, please contact the logback user mailing list -->
-<!-- at http://www.qos.ch/mailman/listinfo/logback-user             -->
-<!--                                                                -->
-<!-- For professional support please see                            -->
-<!--    http://www.qos.ch/shop/products/professionalSupport         -->
-<!--                                                                -->
 <configuration>
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <Target>System.out</Target>
@@ -15,23 +7,12 @@
         </encoder>
     </appender>
 
-    <logger name="se.callista" level="TRACE">
-        <appender-ref ref="stdout"/>
-    </logger>
+    <logger name="org.verygroup" level="INFO"/>
+    <logger name="org.springframework.security" level="INFO"/>
+    <logger name="org.springframework.social" level="INFO"/>
+    <logger name="org.apache.http" level="INFO"/>
 
-    <logger name="org.springframework.security" level="TRACE">
-        <appender-ref ref="stdout"/>
-    </logger>
-
-    <logger name="org.springframework.social" level="TRACE">
-        <appender-ref ref="stdout"/>
-    </logger>
-
-    <logger name="org.apache.http" level="TRACE">
-        <appender-ref ref="stdout"/>
-    </logger>
-
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="stdout"/>
     </root>
 </configuration>
