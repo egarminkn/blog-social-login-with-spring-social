@@ -5,14 +5,14 @@
 
 <!DOCTYPE html>
 <html>
-    <c:set var="title" value="Страница входа 2" scope="request"/>
+    <c:set var="title" value="author-pa" scope="request"/>
     <jsp:include page="fragments/head-tag.jsp"/>
 
     <body>
         <jsp:include page="fragments/user-info.jsp"/>
 
-        <div class="container">
-            <h2>Страница входа 2</h2>
+        <div class="container container-body">
+            <h2>author-pa</h2>
 
             <p>Зайти через:</p>
             <jsp:include page="fragments/login-links.jsp"/>

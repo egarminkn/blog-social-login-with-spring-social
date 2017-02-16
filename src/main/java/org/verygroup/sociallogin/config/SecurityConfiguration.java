@@ -14,9 +14,6 @@ import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
 
-/**
- * Created by magnus on 18/08/14.
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -36,23 +33,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/login/authenticate")
-                .failureUrl("/login?param.error=bad_credentials")
-                .permitAll()
+                .loginPage("/index#modal")
+//                .loginProcessingUrl("/login/authenticate")
+//                .failureUrl("/login?param.error=bad_credentials")
         .and()
             .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/exit") // - куда отправлять POST-запрос для выхода
+                .logoutSuccessUrl("/index")
                 .deleteCookies("JSESSIONID")
         .and()
             .authorizeRequests()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/author-pa").authenticated()
+                .antMatchers("/**").permitAll()
         .and()
             .rememberMe()
         .and()
             .apply(new SpringSocialConfigurer()
-                    .postLoginUrl("/")
-                    .alwaysUsePostLoginUrl(true));
+                    .postLoginUrl("/author-pa")
+                    .alwaysUsePostLoginUrl(true)
+            );
     }
 
     @Bean

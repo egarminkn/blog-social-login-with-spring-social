@@ -9,7 +9,7 @@
     <jsp:include page="fragments/head-tag.jsp"/>
 
     <body>
-        <div class="container">
+        <div class="container container-body">
             <h2>Страница ошибки</h2>
 
             <p>

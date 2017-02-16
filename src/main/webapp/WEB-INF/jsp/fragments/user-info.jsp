@@ -6,14 +6,14 @@
 <div>
     <!-- Replace navbar-default with navbar-inverse to get a black header -->
     <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand">
+        <div class="container container-header">
+            <div class="left-side">
+                <p class="navbar-text navbar-left">
                     Вход через соц.сети
-                </a>
+                </p>
             </div>
 
-            <div>
+            <div class="right-side">
                 <c:if test="${currentUserConnection != null}">
                     <p class="navbar-text navbar-right">
                         Вход выполнен через
@@ -58,6 +58,11 @@
                         </span>
                         <img src="${currentUserConnection.imageUrl}" width="32" height="32">
                     </p>
+
+                    <form method="post" action="exit">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}">
+                        <button type="submit">Выйти</button>
+                    </form>
                 </c:if>
             </div>
         </div>
