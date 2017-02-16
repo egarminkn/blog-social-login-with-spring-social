@@ -21,6 +21,8 @@
     </repositories>
 
     <properties>
+        <java.version>1.8</java.version>
+
         <tomcat.version>8.5.9</tomcat.version>
 
         <slf4j.version>1.7.22</slf4j.version>
@@ -50,6 +52,18 @@
     <build>
         <finalName>social-login</finalName>
         <defaultGoal>package</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <!-- Установка уровня языка Java для проекта -->
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>

@@ -5,6 +5,11 @@
          version="3.1">
     <display-name>Social Login</display-name>
 
+    <context-param>
+        <param-name>spring.profiles.default</param-name>
+        <param-value>dev</param-value>
+    </context-param>
+
     <!-- Смена родительского контекста для контекста Spring MVC (spring/spring-mvc.xml) -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -33,7 +38,8 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<filter>
+    <!-- Character Encoding Filter -->
+    <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -48,9 +54,9 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
 
-    <!-- Spring Security -->
+    <!-- Spring Security Filter -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

@@ -12,8 +12,20 @@
 
     <!--<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>-->
 
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+    <!--
+        Аннотация RequestMapping в принципе работает и без этого, однако этот
+        бин просто необходим для работы аннотаций PostMapping и GetMapping
+    -->
+    <mvc:annotation-driven/>
+
+    <!--
+        Controllers надо сканировать там, где задан бин InternalResourceViewResolver, т.е. в
+        mvc-dispatcher-servlet.xml, который я переименовал в spring-mvc.xml в файле web.xml
+    -->
+    <context:component-scan base-package="org.verygroup.sociallogin.controllers"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
-          p:suffix=".jsp"/>-->
+          p:suffix=".jsp"/>
 
 </beans>

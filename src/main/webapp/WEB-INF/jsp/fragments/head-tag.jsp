@@ -22,7 +22,7 @@
             height: 50px;
             color: white;
             text-decoration: none;
-            margin-right: 20px;
+            margin: 0 20px 0 0;
         }
 
         .ml.btn.btn-block.btn-social-icon.btn-sm .fa {
@@ -35,29 +35,6 @@
         a:focus {
             color: white;
             text-decoration: none;
-        }
-
-        .accountConnection,
-        .accountConnection .connectForm {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .accountConnection {
-            justify-content: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .accountConnection .connectForm {
-            width: 350px;
-            justify-content: space-between;
-        }
-
-        .center {
-            width: 510px;
-            margin-left: auto;
-            margin-right: auto;
         }
     </style>
 

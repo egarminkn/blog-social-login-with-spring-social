@@ -5,10 +5,16 @@
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--<import resource="spring-security.xml"/>-->
-    <!--<import resource="spring-social.xml"/>-->
+    <import resource="spring-security.xml"/>
+    <import resource="spring-social.xml"/>
 
+    <!-- annotation-config достаточно определить только в parent-контексте -->
     <context:annotation-config/>
-    <context:component-scan base-package="org.verygroup.sociallogin"/>
+
+    <!-- Сканируем все, кроме controllers -->
+    <context:component-scan base-package="org.verygroup.sociallogin.config"/>
+    <context:component-scan base-package="org.verygroup.sociallogin.dao"/>
+    <context:component-scan base-package="org.verygroup.sociallogin.model"/>
+    <context:component-scan base-package="org.verygroup.sociallogin.services"/>
 
 </beans>

@@ -15,7 +15,7 @@
             <h2>Страница входа 1</h2>
 
             <p>Зайти через:</p>
-            <jsp:include page="fragments/login-form.jsp"/>
+            <jsp:include page="fragments/login-links.jsp"/>
 
             <jsp:include page="fragments/error-info.jsp"/>
         </div>

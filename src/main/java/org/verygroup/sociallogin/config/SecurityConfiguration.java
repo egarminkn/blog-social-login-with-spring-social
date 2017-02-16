@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.social.security.SpringSocialConfigurer;
 
@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  * Created by magnus on 18/08/14.
  */
 @Configuration
-@EnableWebMvcSecurity
+@EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -26,8 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.
-            jdbcAuthentication()
+        auth
+            .jdbcAuthentication()
             .dataSource(dataSource)
             .withDefaultSchema();
     }
@@ -46,14 +46,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
         .and()
             .authorizeRequests()
-                .antMatchers("/connect/**").permitAll()
                 .antMatchers("/**").authenticated()
         .and()
             .rememberMe()
         .and()
             .apply(new SpringSocialConfigurer()
-                .postLoginUrl("/")
-                .alwaysUsePostLoginUrl(true));
+                    .postLoginUrl("/")
+                    .alwaysUsePostLoginUrl(true));
     }
 
     @Bean
